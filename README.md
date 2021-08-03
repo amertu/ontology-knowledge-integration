@@ -13,14 +13,15 @@ Furthermore, advanced modelling features offered by OWL2 and different Ontology 
 
 ## Step 3: Verification of Semantic Structure
 # Ontology verification
-checking the quality of the ontology created at STEP 1 with the OOPS! ontology pitfall scanner (http://oops.linkeddata.es/) and improve it accordingly.
+Checking the quality of the ontology created at STEP 1 with the OOPS! ontology pitfall scanner (http://oops.linkeddata.es/) and improve it accordingly.
 # KG verification
-Write SHACL rules with varying complexities for validating the knowledge graph resulting from STEP 2 and run these following the instructions in the
+Writing SHACL rules with varying complexities for validating the knowledge graph resulting from STEP 2 and run these following the instructions in the
 TopBraid SHACL engine2 (https://github.com/TopQuadrant/shacl) to get validation results.
 
 ## Step 4: Ontology Alignment
 
-
+I decided to use the schema ontology (https://schema.org/docs/developers.html\#defs) which includes the FoodEstablishment ontology as input for this alignment. However, all entities that have been matched with the metaFood ontology entities were from the FoodEstablishment ontology.
+In addition, I used the web tool of LogMap (http://krrwebtools.cs.ox.ac.uk/logmap/) to find matchings between both ontologies.
 
 
 ## Final Report Overleaf:
