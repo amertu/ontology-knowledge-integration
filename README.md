@@ -10,7 +10,14 @@ During building the ontology, vocabularies of three external ontologies that wer
 Furthermore, advanced modelling features offered by OWL2 and different Ontology Design Patterns are used during this step.
 
 ## Step 2: KG creation through OBDA
+
 ## Step 3: Verification of Semantic Structure
+# Ontology verification
+checking the quality of the ontology created at STEP 1 with the OOPS! ontology pitfall scanner (http://oops.linkeddata.es/) and improve it accordingly.
+# KG verification
+Write SHACL rules with varying complexities for validating the knowledge graph resulting from STEP 2 and run these following the instructions in the
+TopBraid SHACL engine2 (https://github.com/TopQuadrant/shacl) to get validation results.
+
 ## Step 4: Ontology Alignment
 
 
