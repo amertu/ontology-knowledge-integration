@@ -10,6 +10,10 @@ During building the ontology, vocabularies of three external ontologies that wer
 Furthermore, advanced modelling features offered by OWL2 and different Ontology Design Patterns are used during this step.
 
 ## Step 2: KG creation through OBDA
+I used Ontop plugin in Protégé to create the mapping assertions between my ontology and relational database. I applied the mappings to materialize the resulting ontology-based data into a knowledge graph and stored it into the GraphDB graph-database.
+
+Ontop Tutorial: https://github.com/ontop/ontop/wiki/Tutorials
+
 
 ## Step 3: Verification of Semantic Structure
 # Ontology verification
@@ -21,6 +25,7 @@ TopBraid SHACL engine2 (https://github.com/TopQuadrant/shacl) to get validation 
 ## Step 4: Ontology Alignment
 
 I decided to use the schema ontology (https://schema.org/docs/developers.html#defs) which includes the FoodEstablishment ontology as input for this alignment. However, all entities that have been matched with the metaFood ontology entities were from the FoodEstablishment ontology.
+
 In addition, I used the web tool of LogMap (http://krrwebtools.cs.ox.ac.uk/logmap/) to find matchings between both ontologies.
 
 
