@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#"
+     xml:base="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl"
+     xmlns:mappings="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#entity1 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#entity1"/>
+    
+
+
+    <!-- http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#entity2 -->
+
+    <owl:AnnotationProperty rdf:about="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#entity2"/>
+    
+
+
+    <!-- http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#measure -->
+
+    <owl:AnnotationProperty rdf:about="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#measure"/>
+    
+
+
+    <!-- http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#relation -->
+
+    <owl:AnnotationProperty rdf:about="http://www.cs.ox.ac.uk/isg/projects/LogMap/mappings.owl#relation"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://metafood.org#FastFoodRestaurant -->
+
+    <owl:Class rdf:about="http://metafood.org#FastFoodRestaurant">
+        <owl:equivalentClass rdf:resource="http://schema.org/FastFoodRestaurant"/>
+    </owl:Class>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.766</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#FastFoodRestaurant</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/FastFoodRestaurant</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#FastFoodRestaurant"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/FastFoodRestaurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://metafood.org#OrderSpecification -->
+
+    <owl:Class rdf:about="http://metafood.org#OrderSpecification">
+        <owl:equivalentClass rdf:resource="http://schema.org/Order"/>
+    </owl:Class>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.7030000000000001</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#OrderSpecification</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Order</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#OrderSpecification"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Order"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://metafood.org#Rating -->
+
+    <owl:Class rdf:about="http://metafood.org#Rating">
+        <owl:equivalentClass rdf:resource="http://schema.org/Rating"/>
+    </owl:Class>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.7809999999999999</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#Rating</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Rating</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#Rating"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Rating"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://metafood.org#Restaurant -->
+
+    <owl:Class rdf:about="http://metafood.org#Restaurant">
+        <owl:equivalentClass rdf:resource="http://schema.org/Restaurant"/>
+    </owl:Class>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8140000000000001</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#Restaurant</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Restaurant</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#Restaurant"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Restaurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://metafood.org#ThingsWithWebsite -->
+
+    <owl:Class rdf:about="http://metafood.org#ThingsWithWebsite">
+        <owl:equivalentClass rdf:resource="http://schema.org/WebSite"/>
+    </owl:Class>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.5</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#ThingsWithWebsite</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/WebSite</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#ThingsWithWebsite"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/WebSite"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/goodrelations/v1#PaymentMethod -->
+
+    <owl:Class rdf:about="http://purl.org/goodrelations/v1#PaymentMethod">
+        <owl:equivalentClass rdf:resource="http://schema.org/PaymentMethod"/>
+    </owl:Class>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8689999999999999</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.org/goodrelations/v1#PaymentMethod</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/PaymentMethod</entity2>
+        <owl:annotatedSource rdf:resource="http://purl.org/goodrelations/v1#PaymentMethod"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/PaymentMethod"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Menu -->
+
+    <owl:Class rdf:about="http://purl.org/ontology/fo/Menu">
+        <owl:equivalentClass rdf:resource="http://schema.org/Menu"/>
+    </owl:Class>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.808</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.org/ontology/fo/Menu</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Menu</entity2>
+        <owl:annotatedSource rdf:resource="http://purl.org/ontology/fo/Menu"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Menu"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://schema.org/FastFoodRestaurant -->
+
+    <owl:Class rdf:about="http://schema.org/FastFoodRestaurant"/>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.766</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#FastFoodRestaurant</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/FastFoodRestaurant</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#FastFoodRestaurant"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/FastFoodRestaurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://schema.org/Menu -->
+
+    <owl:Class rdf:about="http://schema.org/Menu"/>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.808</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.org/ontology/fo/Menu</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Menu</entity2>
+        <owl:annotatedSource rdf:resource="http://purl.org/ontology/fo/Menu"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Menu"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://schema.org/Order -->
+
+    <owl:Class rdf:about="http://schema.org/Order"/>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.7030000000000001</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#OrderSpecification</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Order</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#OrderSpecification"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Order"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://schema.org/PaymentMethod -->
+
+    <owl:Class rdf:about="http://schema.org/PaymentMethod"/>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8689999999999999</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://purl.org/goodrelations/v1#PaymentMethod</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/PaymentMethod</entity2>
+        <owl:annotatedSource rdf:resource="http://purl.org/goodrelations/v1#PaymentMethod"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/PaymentMethod"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://schema.org/Rating -->
+
+    <owl:Class rdf:about="http://schema.org/Rating"/>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.7809999999999999</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#Rating</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Rating</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#Rating"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Rating"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://schema.org/Restaurant -->
+
+    <owl:Class rdf:about="http://schema.org/Restaurant"/>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8140000000000001</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#Restaurant</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/Restaurant</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#Restaurant"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/Restaurant"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+    
+
+
+    <!-- http://schema.org/WebSite -->
+
+    <owl:Class rdf:about="http://schema.org/WebSite"/>
+    <owl:Axiom>
+        <measure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.5</measure>
+        <relation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">=</relation>
+        <entity1 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://metafood.org#ThingsWithWebsite</entity1>
+        <entity2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://schema.org/WebSite</entity2>
+        <owl:annotatedSource rdf:resource="http://metafood.org#ThingsWithWebsite"/>
+        <owl:annotatedTarget rdf:resource="http://schema.org/WebSite"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#equivalentClass"/>
+    </owl:Axiom>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 1.3.8.1099) http://owlapi.sourceforge.net -->
+

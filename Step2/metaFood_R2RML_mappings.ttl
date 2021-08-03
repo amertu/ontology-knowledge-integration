@@ -1,0 +1,1918 @@
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix :      <http://metafood.org#> .
+@prefix obda:  <https://w3id.org/obda/vocabulary#> .
+@prefix adms:  <http://www.w3.org/ns/adms#> .
+@prefix ns:    <http://creativecommons.org/ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gr:    <http://purl.org/goodrelations/v1#> .
+@prefix ns1:   <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix food:  <http://metafood.org#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ic:    <http://ontology.eil.utoronto.ca/icontact.owl#> .
+@prefix vann:  <http://purl.org/vocab/vann/> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+<urn:indianRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Indian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:japaneseRestaurant-1>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Japanese'"
+                         ] ;
+        rr:subjectMap    [ a            rr:SubjectMap , rr:TermMap ;
+                           rr:class     food:JapaneseRestaurant ;
+                           rr:template  "http://metafood.org#JapaneseRestaurant/{restaurant_id}" ;
+                           rr:termType  rr:IRI
+                         ] .
+
+<urn:twoStarRestaurant-2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, restaurant r\nwhere r.id = rc.restaurant_id and r.rating_value >= 3 and r.rating_value < 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#TwoStarRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:threeStarRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom restaurant r, menu m\nwhere r.id = m.restaurant_id and r.rating_value >= 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:paymentMethodCash_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"payment_cash\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "payment_cash" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:isEnabled
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     food:PaymentMethodCash ;
+                                 rr:template  "http://metafood.org#PaymentMethodCash/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:mainDish_1>  a            rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"lunch\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "lunch" ;
+                                                 rr:datatype  xsd:boolean ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:isOffered
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:MainDish ;
+                                 rr:template  "http://metafood.org#mainDish{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:indianRestaurant-2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Indian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#IndianRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:snack_1>  a               rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"sandwiches\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "sandwiches" ;
+                                                 rr:datatype  xsd:boolean ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:isOffered
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:Snack ;
+                                 rr:template  "http://metafood.org#snack{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:japaneseRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Japanese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#JapaneseRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:fastFoodRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and (c.name = 'Burgers' or c.name = 'Kebab')"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#FastFoodRestaurant/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:oneStarRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurant\"\nwhere  rating_value < 3"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#OneStarRestaurant/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:italianRestaurant-1>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Italian'"
+                         ] ;
+        rr:subjectMap    [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:class     food:ItalianRestaurant ;
+                           rr:template  "http://metafood.org#ItalianRestaurant/{restaurant_id}" ;
+                           rr:termType  rr:IRI
+                         ] .
+
+<urn:deliveryService_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"data_source\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "data_source" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:DeliveryService ;
+                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:italianRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Italian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:rating_1>  a              rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"rating_value\", \"rating_count\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "rating_value" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasRatingValue
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "rating_count" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasRatingCount
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     food:Rating ;
+                                 rr:template  "http://metafood.org#rating/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:menu_1>  a                rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"name\", \"description\", \"price\", \"restaurant_id\" from \"public\".\"menu\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "description" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "name" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#price/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPrice
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     <http://purl.org/ontology/fo/Menu> ;
+                                 rr:template  "http://metafood.org#menu/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:twoStarRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom restaurant r, menu m\nwhere r.id = m.restaurant_id and rating_value >= 3 and rating_value < 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:chineseRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and c.name = 'Chinese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#ChineseRestaurant/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:japaneseRestaurant-2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Japanese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#JapaneseRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:threeStarRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom restaurant r, menu m\nwhere r.id = m.restaurant_id and r.rating_value >= 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#ThreeStarRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:price_1>  a               rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"name\", \"description\", \"price\", \"restaurant_id\" from \"public\".\"menu\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "price" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceValue
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:Price ;
+                                 rr:template  "http://metafood.org#price/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:japaneseRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Japanese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:italianRestaurant-2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Italian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#ItalianRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:indianRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and c.name = 'Indian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#IndianRestaurant/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:italianRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Italian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#ItalianRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:twoStarRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom restaurant r, menu m\nwhere r.id = m.restaurant_id and rating_value >= 3 and rating_value < 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#TwoStarRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:breakfast_1>  a           rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\",\"breakfast\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "breakfast" ;
+                                                 rr:datatype  xsd:boolean ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:isOffered
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:Breakfast ;
+                                 rr:template  "http://metafood.org#breakfast/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:phoneNumber>  a           rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"phone\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "phone" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasLineNumber
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#PhoneNumber/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:threeStarRestaurant-1>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select \"id\", \"rating_value\", \"rating_count\" from \"public\".\"restaurant\" where rating_value >= 4.5"
+                         ] ;
+        rr:subjectMap    [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:class     food:ThreeStarRestaurant ;
+                           rr:template  "http://metafood.org#ThreeStarRestaurant/{id}" ;
+                           rr:termType  rr:IRI
+                         ] .
+
+<urn:cuisine_1>  a             rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"name\" from \"public\".\"cuisine\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "name" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:Cuisine ;
+                                 rr:template  "http://metafood.org#cuisine/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:oneStarRestaurant-1>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select \"id\", \"rating_value\", \"rating_count\" from \"public\".\"restaurant\" where rating_value < 3"
+                         ] ;
+        rr:subjectMap    [ a            rr:SubjectMap , rr:TermMap ;
+                           rr:class     food:OneStarRestaurant ;
+                           rr:template  "http://metafood.org#OneStarRestaurant/{id}" ;
+                           rr:termType  rr:IRI
+                         ] .
+
+<urn:paymentMethodCreditCard_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\", \"payment_card\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "payment_card" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:isEnabled
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     gr:PaymentMethodCreditCard ;
+                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:fastFoodRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and (c.name = 'Burgers' or c.name = 'Kebab')"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:oneStarRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurant\" r join menu m on r.id = m.restaurant_id\nwhere r.rating_value < 3"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:threeStarRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from restaurant\nwhere rating_value >= 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#ThreeStarRestaurant/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:chineseRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Chinese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#mainDish{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#snack/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#breakfast/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasFoodItem
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:fastFoodRestaurant-1>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Burgers' or c.name = 'Kebab'"
+                         ] ;
+        rr:subjectMap    [ a            rr:SubjectMap , rr:TermMap ;
+                           rr:class     food:FastFoodRestaurant ;
+                           rr:template  "http://metafood.org#FastFoodRestaurant/{restaurant_id}" ;
+                           rr:termType  rr:IRI
+                         ] .
+
+<urn:threeStarRestaurant-2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, restaurant r\nwhere r.id = rc.restaurant_id and r.rating_value >= 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#ThreeStarRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:chineseRestaurant-1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Chinese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#ChineseRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:oneStarRestaurant-2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, restaurant r\nwhere r.id = rc.restaurant_id and r.rating_value < 3"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#OneStarRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:japaneseRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and c.name = 'Japanese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#JapaneseRestaurant/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:fastFoodRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and (c.name = 'Burgers' or c.name = 'Kebab')"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#FastFoodRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:italianRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and c.name = 'Italian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#ItalianRestaurant/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{restaurant_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:oneStarRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurant\" r join menu m on r.id = m.restaurant_id\nwhere r.rating_value < 3"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#OneStarRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:indianRestaurant-3_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Indian'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#IndianRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:deliverySpecification_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\",\"delivery_charge\", \"delivery_time\", \"delivery_postcode\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "delivery_postcode" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasPostalCode
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "delivery_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasDeliveryTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "delivery_charge" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasDeliveryCharge
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:class     food:DeliverySpecification ;
+                                 rr:template  "http://metafood.org#DeliverySpecification/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:twoStarRestaurant-4_1>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from restaurant\nwhere rating_value >= 3 and rating_value < 4.5"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliverySpecification/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasDeliverySpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCreditCard/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCreditMethod
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#DeliveryService/{data_source}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:isDeliveredBy
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#TwoStarRestaurant/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:orderSpecificationOfRestaurant
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "min_order" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasMinOrder
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "waiting_time" ;
+                                                 rr:datatype  xsd:int ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasWaitingTime
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#PaymentMethodCash/{id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:acceptedPaymentCashMethod
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     food:OrderSpecification ;
+                                 rr:template  "http://metafood.org#OrderSpecification/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:chineseRestaurant-3_2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select r.id as resId, r.description as resDes, r.name as resName, r.price_category as resPriceCat, r.url as resUrl, m.id as menuId\nfrom \"public\".\"restaurantcuisine\" rc, cuisine c, restaurant r, menu m\nwhere rc.cuisine_id = c.id and r.id = rc.restaurant_id and r.id = m.restaurant_id and c.name = 'Chinese'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resPriceCat" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasPriceCategory
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#rating/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasRating
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#menu/{menuId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  gr:offers
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "resDes" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:description
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resUrl" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasWebSite
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#OrderSpecification/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasOrderSpecification
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "resName" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gr:legalName
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#address/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  ic:hasAddress
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://metafood.org#PhoneNumber/{resId}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasPhoneNumber
+                               ] ;
+        rr:subjectMap          [ a            rr:SubjectMap , rr:TermMap ;
+                                 rr:template  "http://metafood.org#ChineseRestaurant/{resId}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:fastFoodRestaurant-2>
+        a                      rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Burgers' or c.name = 'Kebab'"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://metafood.org#cuisine/{cuisine_id}" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  food:hasCuisine
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "http://metafood.org#FastFoodRestaurant/{restaurant_id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:chineseRestaurant-2>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Chinese'"
+                         ] ;
+        rr:subjectMap    [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:class     food:ChineseRestaurant ;
+                           rr:template  "http://metafood.org#ChineseRestaurant/{restaurant_id}" ;
+                           rr:termType  rr:IRI
+                         ] .
+
+<urn:twoStarRestaurant-1>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select \"id\", \"rating_value\", \"rating_count\" from \"public\".\"restaurant\" where rating_value >= 3 and rating_value < 4.5"
+                         ] ;
+        rr:subjectMap    [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:class     food:TwoStarRestaurant ;
+                           rr:template  "http://metafood.org#TwoStarRestaurant/{id}" ;
+                           rr:termType  rr:IRI
+                         ] .
+
+<urn:address_1>  a             rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "select \"id\",  \"city\", \"post_code\", \"street\", \"number\", \"number_addon\", \"latitude\", \"longitude\" from \"public\".\"restaurant\""
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "number" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasStreetNumber
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "latitude" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  <http://www.w3.org/2003/01/geo/wgs84_pos#lat>
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "longitude" ;
+                                                 rr:datatype  xsd:float ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  <http://www.w3.org/2003/01/geo/wgs84_pos#long>
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "city" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  food:hasCity
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "street" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasStreet
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "post_code" ;
+                                                 rr:datatype  xsd:string ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  ic:hasPostalCode
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     ic:Address ;
+                                 rr:template  "http://metafood.org#address/{id}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+<urn:indianRestaurant-1>
+        a                rr:TriplesMap ;
+        rr:logicalTable  [ a            rr:R2RMLView ;
+                           rr:sqlQuery  "select * from \"public\".\"restaurantcuisine\" rc join cuisine c on rc.cuisine_id = c.id\nwhere c.name = 'Indian'"
+                         ] ;
+        rr:subjectMap    [ a            rr:TermMap , rr:SubjectMap ;
+                           rr:class     food:IndianRestaurant ;
+                           rr:template  "http://metafood.org#IndianRestaurant/{restaurant_id}" ;
+                           rr:termType  rr:IRI
+                         ] .

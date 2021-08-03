@@ -1,0 +1,149 @@
+@prefix :        <http://metafood.org#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix gr:      <http://purl.org/goodrelations/v1#> .
+@prefix ic:      <http://ontology.eil.utoronto.ca/icontact.owl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:     <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix food:    <http://metafood.org#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base            <http://metafood.org#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+
+# :hasPriceValue value should be greater than 0 and of type xsd:float
+
+food:PriceValueConstraint
+    a              sh:Nodeshape ;
+    sh:targetClass food:Price ;
+    sh:property    [ sh:path         food:hasPriceValue ;
+                     sh:minCount     1 ;
+                     sh:maxCount     1 ;
+                     sh:minExclusive 0 ;
+                     sh:datatype     xsd:float ;
+                     sh:message
+                                     ":Price must have one hasPriceValue with value greater than 0 and type float."@en ; ] ;
+.
+
+# A restaurnat must offer at least one menu.
+
+food:offersConstraint
+    a              sh:Nodeshape ;
+    sh:targetClass food:Restaurant ;
+    sh:property    [ sh:path     gr:offers ;
+                     sh:minCount 1 ;
+                     sh:nodeKind sh:IRI ;
+                     sh:message  ":Restaurnat must offer at least one menu."@en ; ]
+.
+
+# :long (longitude) must be between -180 and 180
+
+food:longConstraint
+    a                  sh:PropertyShape ;
+    sh:targetObjectsOf <http://www.w3.org/2003/01/geo/wgs84_pos#long> ;
+    sh:minInclusive    -180 ;
+    sh:maxInclusive    180 ;
+    sh:datatype        xsd:float ;
+    sh:message         ":long value should be between -180 and 180"@en ;
+.
+
+# :lat (latitude) must be between -90 and 90
+
+food:longConstraint
+    a                  sh:PropertyShape ;
+    sh:targetObjectsOf <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ;
+    sh:minInclusive    -90 ;
+    sh:maxInclusive    90 ;
+    sh:datatype        xsd:float ;
+    sh:message         ":lat value should be between -90 and 90"@en ;
+.
+
+#  :hasRatingValue should be between 0 and 5
+
+food:ratingValueConstraint
+    a                  sh:PropertyShape ;
+    sh:targetObjectsOf food:hasRatingValue ;
+    sh:minInclusive    0 ;
+    sh:maxInclusive    5 ;
+    sh:datatype        xsd:float ;
+    sh:message         ":rating value should be between 0 and 5"@en ;
+.
+# :webSite value must follow given pattern
+
+food:webSiteConstraint
+    a                  sh:PropertyShape ;
+    sh:targetObjectsOf ic:hasWebSite ;
+    sh:pattern
+                       "^(https?://)?(www.)[-a-zA-Z0-9@:%._+~#=]{2,256}.[a-z]{2,4}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)|(https?://)?(www.)?(?!ww)[-a-zA-Z0-9@:%._+~#=]{2,256}" ;
+    sh:datatype        xsd:string ;
+    sh:message         ":website must follow given pattern"@en ;
+.
+
+
+#:Address must have some properties
+
+food:AddressConstraint
+    a              sh:Nodeshape ;
+    sh:targetClass ic:Address ;
+    sh:property    [ sh:path     food:hasCity ;
+                     sh:maxCount 1 ;
+                     sh:maxCount 1 ;
+                     sh:datatype xsd:string ;
+                     sh:message  ":Address must have one city of type string."@en ; ] ;
+    sh:property    [ sh:path     ic:hasStreet ;
+                     sh:maxCount 1 ;
+                     sh:maxCount 1 ;
+                     sh:datatype xsd:string ;
+                     sh:message  ":Address must have one street of type string."@en ; ] ;
+    sh:property    [ sh:path     ic:hasStreetNumber ;
+                     sh:maxCount 1 ;
+                     sh:maxCount 1 ;
+                     sh:datatype xsd:string ;
+                     sh:message  ":Address must have one street number of type string."@en ; ] ;
+    sh:property    [ sh:path     ic:hasPostalCode ;
+                     sh:maxCount 1 ;
+                     sh:maxCount 1 ;
+                     sh:datatype xsd:string ;
+                     sh:message  ":Address must have one street number of type string."@en ; ]
+.
+
+
+# A restaurant has one rated category.
+
+food:OneStarRestaurantConstraint
+    a              sh:NodeShape ;
+    sh:targetClass food:OneStarRestaurant ;
+    sh:sparql      [ a           sh:SPARQLConstraint ;
+                     sh:message  "A restaurant has one rated category" ;
+                     sh:prefixes food: ;
+                     sh:select   """
+                     PREFIX food: <http://metafood.org#>
+                     PREFIX gr: <http://purl.org/goodrelations/v1#>
+
+                     select ?this where {
+                            ?this a food:OneStarRestaurant ;
+                                  gr:legalName ?oneName .
+
+                            ?y a food:TwoStarRestaurant ;
+                               gr:legalName ?twoName .
+
+                            ?z a food:ThreeStarRestaurant ;
+                               gr:legalName ?threeName .
+
+                            Filter ( ?oneName = ?twoName || ?oneName = ?threeName)
+                     }
+                                  """ ; ] ; .
+
+food:ExampleNS
+    a           owl:Ontology ;
+    owl:imports sh: ;
+    sh:declare  [ sh:prefix    "rdf" ;
+                  sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ; ] ;
+    sh:declare  [ sh:prefix    "rdfs" ;
+                  sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ; ] ;
+    sh:declare  [ sh:prefix    "food" ;
+                  sh:namespace "http://metafood.org#"^^xsd:anyURI ; ] ;
+.
+

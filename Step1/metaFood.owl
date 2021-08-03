@@ -1,0 +1,1123 @@
+@prefix : <http://metafood.org#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix ic: <http://ontology.eil.utoronto.ca/icontact.owl#> .
+@prefix ns: <http://creativecommons.org/ns#> .
+@prefix ns1: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix food: <http://metafood.org#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://metafood.org#> .
+
+<http://metafood.org#> rdf:type owl:Ontology ;
+                        dc:rights "You are free to copy, distribute and transmit the work; to remix/adapt the work (e.g. to import the ontology and create specializations of its elements), as long as you attribute the work in the manner specified by the author or licensor." ;
+                        dc:title "The metaFood Vocabulary for Semantic Web-based Food E-Commerce" ;
+                        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+                        rdfs:label "metaFood Ontology" ;
+                        owl:versionInfo "V 1.0, Release 2020-06-13" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#license
+ns:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/subject
+dc:subject rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/goodrelations/v1#displayPosition
+gr:displayPosition rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/goodrelations/v1#relatedWebService
+gr:relatedWebService rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#deprecated
+owl:deprecated rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+ns1:term_status rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/adms#relatedDocumentation
+adms:relatedDocumentation rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/homepage
+foaf:homepage rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://purl.org/dc/terms/Box
+dcterms:Box rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/ISO3166
+dcterms:ISO3166 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/ISO639-2
+dcterms:ISO639-2 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/ISO639-3
+dcterms:ISO639-3 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/Period
+dcterms:Period rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/Point
+dcterms:Point rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC1766
+dcterms:RFC1766 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC3066
+dcterms:RFC3066 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC4646
+dcterms:RFC4646 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/RFC5646
+dcterms:RFC5646 rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/URI
+dcterms:URI rdf:type rdfs:Datatype .
+
+
+###  http://purl.org/dc/terms/W3CDTF
+dcterms:W3CDTF rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#time
+xsd:time rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://metafood.org#acceptedPaymentCashMethod
+food:acceptedPaymentCashMethod rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf gr:acceptedPaymentMethods ;
+                               rdfs:domain food:OrderSpecification ;
+                               rdfs:range food:PaymentMethodCash ;
+                               owl:propertyDisjointWith food:hasCurrency ;
+                               rdfs:comment "The sub property of gr:acceptedPaymentMethods represents food:PaymentMethodCash accepted for an order." ;
+                               rdfs:label "accepted payment cash method" .
+
+
+###  http://metafood.org#acceptedPaymentCreditMethod
+food:acceptedPaymentCreditMethod rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf gr:acceptedPaymentMethods ;
+                                 rdfs:domain food:OrderSpecification ;
+                                 rdfs:range gr:PaymentMethodCreditCard ;
+                                 owl:propertyDisjointWith food:hasCurrency ;
+                                 rdfs:comment "The sub property of gr:acceptedPaymentMethods represents gr:acceptedPaymentCreditMethod accepted for an order.." ;
+                                 rdfs:label "accepted payment credit method" .
+
+
+###  http://metafood.org#hasContactSpecification
+food:hasContactSpecification rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf owl:topObjectProperty ;
+                             rdfs:domain gr:BusinessEntity ;
+                             rdfs:range ic:iContactThing ;
+                             rdfs:comment "The address or phone numer that a buisiness entity can have." ;
+                             rdfs:label "has contact specification" .
+
+
+###  http://metafood.org#hasCuisine
+food:hasCuisine rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain food:Restaurant ;
+                rdfs:range food:Cuisine ;
+                owl:propertyDisjointWith food:hasCurrency ;
+                rdfs:comment "hasCuisine links the food:Restaurant to the food:Cuisine class." ;
+                rdfs:label "has cuisine" .
+
+
+###  http://metafood.org#hasCurrency
+food:hasCurrency rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain food:Price ;
+                 rdfs:range food:Currency ;
+                 owl:propertyDisjointWith ic:hasAddress ;
+                 rdfs:comment "hasCurrency links the food:Price class to the food:Currency class." ;
+                 rdfs:label "has currency" .
+
+
+###  http://metafood.org#hasDeliverySpecification
+food:hasDeliverySpecification rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf owl:topObjectProperty ;
+                              rdfs:domain food:OrderSpecification ;
+                              rdfs:range food:DeliverySpecification ;
+                              rdfs:comment "hasDeliverySpecification links food:OrderSpecification class to the food:DeliverySpecification class." ;
+                              rdfs:label "has delivery specification" .
+
+
+###  http://metafood.org#hasFoodItem
+food:hasFoodItem rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain <http://purl.org/ontology/fo/Menu> ;
+                 rdfs:range <http://purl.org/ontology/fo/Food> ;
+                 rdfs:comment "hasFoodItem links fo:Menu class to the fo:Food class." ;
+                 rdfs:label "has food item" .
+
+
+###  http://metafood.org#hasOrderSpecification
+food:hasOrderSpecification rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf owl:topObjectProperty ;
+                           owl:inverseOf food:orderSpecificationOfRestaurant ;
+                           rdfs:domain food:Restaurant ;
+                           rdfs:range food:OrderSpecification ;
+                           rdfs:comment "hasOrderSpecification links food:Restaurant class to the food:OrderSpecification class." ;
+                           rdfs:label "has order specification" .
+
+
+###  http://metafood.org#hasPhoneNumber
+food:hasPhoneNumber rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf food:hasContactSpecification ;
+                    rdfs:domain food:Restaurant ;
+                    rdfs:range ic:PhoneNumber ;
+                    rdfs:comment "hasPhoneNumber links any class to the food:PhoneNumber class." ;
+                    rdfs:label "has phone number" .
+
+
+###  http://metafood.org#hasPrice
+food:hasPrice rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf food:isPriceOf ;
+              rdfs:domain <http://purl.org/ontology/fo/Menu> ;
+              rdfs:range food:Price ;
+              rdfs:comment "hasPrice links any class to the food:Price class." ;
+              rdfs:label "has price" .
+
+
+###  http://metafood.org#hasRating
+food:hasRating rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain food:Restaurant ;
+               rdfs:range food:Rating ;
+               rdfs:comment "hasRating links food:Restaurant class to food:Rating class." ;
+               rdfs:label "has rating" .
+
+
+###  http://metafood.org#isDeliveredBy
+food:isDeliveredBy rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain food:OrderSpecification ;
+                   rdfs:range food:DeliveryService ;
+                   rdfs:comment "isDeliveredBy links food:OrderSpecification class to the food:DeliveryService class." ;
+                   rdfs:label "is delivered by" .
+
+
+###  http://metafood.org#isPriceOf
+food:isPriceOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain food:Price ;
+               rdfs:range <http://purl.org/ontology/fo/Menu> ;
+               rdfs:comment "isPriceOf links the food:Price class to any class." ;
+               rdfs:label "is price of" .
+
+
+###  http://metafood.org#orderSpecificationOfRestaurant
+food:orderSpecificationOfRestaurant rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                    rdfs:domain food:OrderSpecification ;
+                                    rdfs:range food:Restaurant ;
+                                    rdfs:comment "isOrderSpecificationOfRestaurant links food:OrderSpecification class to the food:Restaurant class." ;
+                                    rdfs:label "is order specificatio of restaurant" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasAddress
+ic:hasAddress rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf food:hasContactSpecification ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:domain food:Restaurant ;
+              rdfs:range ic:Address ;
+              rdfs:comment "hasAddress links any class to the ic:Address class."@en ;
+              rdfs:label "has address" .
+
+
+###  http://purl.org/goodrelations/v1#acceptedPaymentMethods
+gr:acceptedPaymentMethods rdf:type owl:ObjectProperty ;
+                          rdfs:domain food:OrderSpecification ;
+                          rdfs:range gr:PaymentMethod ;
+                          rdfs:comment "The gr:PaymentMethod or methods accepted by the gr:BusinessEntity."@en ;
+                          rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+                          rdfs:label "accepted payment methods"@en .
+
+
+###  http://purl.org/goodrelations/v1#offers
+gr:offers rdf:type owl:ObjectProperty ;
+          rdfs:domain food:Restaurant ;
+          rdfs:range <http://purl.org/ontology/fo/Menu> ;
+          rdfs:comment "This links a food:Restaurant to the foods fo:Food it offers."@en ;
+          rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+          rdfs:label "offers"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://metafood.org#hasAreaCode
+food:hasAreaCode rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf food:hasTelephoneData ;
+                 rdfs:domain ic:PhoneNumber ;
+                 rdfs:range xsd:int ;
+                 rdfs:comment "a series of numbers used before the main phone number when someone phone someone outside a own town or area." ;
+                 rdfs:label "has area code" .
+
+
+###  http://metafood.org#hasCity
+food:hasCity rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf ic:addressDataProperty ;
+             rdfs:domain ic:Address ;
+             rdfs:range xsd:string ;
+             rdfs:comment "the name of a city." ;
+             rdfs:label "has city" .
+
+
+###  http://metafood.org#hasCountryCode
+food:hasCountryCode rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf food:hasTelephoneData ;
+                    rdfs:domain ic:PhoneNumber ;
+                    rdfs:range xsd:int ;
+                    rdfs:comment "a series of numbers used before the main phone number when someone phone someone outside a country." ;
+                    rdfs:label "has country code" .
+
+
+###  http://metafood.org#hasCurrencyValue
+food:hasCurrencyValue rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf food:hasPriceData ;
+                      rdfs:domain food:Currency ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "The value that a currency  of a price can take, such as EUR, GBP etc." ;
+                      rdfs:label "has currency value" .
+
+
+###  http://metafood.org#hasDeliveryCharge
+food:hasDeliveryCharge rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain food:DeliverySpecification ;
+                       rdfs:range xsd:float ;
+                       rdfs:comment "is the amount of money it takes for a delivery service to deliver the order." ;
+                       rdfs:label "has delivery charge" .
+
+
+###  http://metafood.org#hasDeliveryTime
+food:hasDeliveryTime rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf owl:topDataProperty ;
+                     rdfs:domain food:DeliverySpecification ;
+                     rdfs:range xsd:int ;
+                     rdfs:comment "typical delivery time to an address, that it takes for a delivery service to deliver the order." ;
+                     rdfs:label "has delivery time" .
+
+
+###  http://metafood.org#hasLineNumber
+food:hasLineNumber rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf food:hasTelephoneData ;
+                   rdfs:domain ic:PhoneNumber ;
+                   rdfs:range xsd:int ;
+                   rdfs:comment "a series of numbers used as the main phone number when someone phone someone within a town or area." ;
+                   rdfs:label "has line number" .
+
+
+###  http://metafood.org#hasMinOrder
+food:hasMinOrder rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain food:OrderSpecification ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "min amount of an order, in pounds." ;
+                 rdfs:label "has min order" .
+
+
+###  http://metafood.org#hasPriceCategory
+food:hasPriceCategory rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdfs:domain food:Restaurant ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment """It specifies how expensive the food offered by a restaurant according to customers experiences.
+Example: €, €€, €€€. In this case €€ would mean, the price is fair and not over budget.""" ;
+                      rdfs:label "has price category" .
+
+
+###  http://metafood.org#hasPriceData
+food:hasPriceData rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:comment "generalized property for price data properties." ;
+                  rdfs:label "has price data" .
+
+
+###  http://metafood.org#hasPriceValue
+food:hasPriceValue rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf food:hasPriceData ;
+                   rdfs:domain food:Price ;
+                   rdfs:range xsd:float ;
+                   rdfs:comment "A value that the price of a menu can take." ;
+                   rdfs:label "has price value" .
+
+
+###  http://metafood.org#hasRatingCount
+food:hasRatingCount rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain food:Rating ;
+                    rdfs:range xsd:int ;
+                    rdfs:comment "how many users has rated a restaurant on the delivery service website." ;
+                    rdfs:label "has rating count" .
+
+
+###  http://metafood.org#hasRatingValue
+food:hasRatingValue rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain food:Rating ;
+                    rdfs:range xsd:float ;
+                    rdfs:comment """It takes values between 0 and 5 to evaluate a restaurant on the delivery service website.
+Example: 5 corresponds to high rated restaurant.""" ;
+                    rdfs:label "has rating value" .
+
+
+###  http://metafood.org#hasTelephoneData
+food:hasTelephoneData rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf ic:hasContactDataProperty ;
+                      rdfs:domain ic:PhoneNumber ;
+                      rdfs:comment "generalized property for telephone data properties." ;
+                      rdfs:label "has telephone data" .
+
+
+###  http://metafood.org#hasWaitingTime
+food:hasWaitingTime rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf owl:topDataProperty ;
+                    rdfs:domain food:OrderSpecification ;
+                    rdfs:range xsd:int ;
+                    rdfs:comment "how long it takes an order after is picked up to be ready for delivery." ;
+                    rdfs:label "has waiting time" .
+
+
+###  http://metafood.org#isEnabled
+food:isEnabled rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain gr:PaymentMethod ;
+               rdfs:range xsd:string ;
+               rdfs:comment "It specifies whether payment method for a restaurant is enabled." ;
+               rdfs:label "is enabled" .
+
+
+###  http://metafood.org#isOffered
+food:isOffered rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain <http://purl.org/ontology/fo/Food> ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "It specifies whether breakfast, lunch or snacks are offered by a restaurant or not." ;
+               rdfs:label "is offered" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#addressDataProperty
+ic:addressDataProperty rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf ic:hasContactDataProperty ;
+                       rdfs:comment "generalized property for address data properties." ;
+                       rdfs:label "address data property" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#emailDataProperty
+ic:emailDataProperty rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf ic:hasContactDataProperty ;
+                     rdfs:domain food:Restaurant ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "an email address of a restaurant." ;
+                     rdfs:label "email data property" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasBuilding
+ic:hasBuilding rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf ic:addressDataProperty ;
+               rdfs:domain ic:Address ;
+               rdfs:range xsd:string ;
+               rdfs:comment "The building where the address is located.  Often used in countries like England, India and Japan."@en ;
+               rdfs:label "has building"@en .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasContactDataProperty
+ic:hasContactDataProperty rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf owl:topDataProperty ;
+                          rdfs:comment "generalized property for contact data properties." ;
+                          rdfs:label "has contact data property" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasPostalCode
+ic:hasPostalCode rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf ic:addressDataProperty ;
+                 rdfs:domain food:ThingsWithPostalCode ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "postal code of an adress. It can be also delivery postal code." ;
+                 rdfs:label "has postal code"@en .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasStreet
+ic:hasStreet rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf ic:addressDataProperty ;
+             rdfs:domain ic:Address ;
+             rdfs:range xsd:string ;
+             rdfs:comment "The name of a street of an adress." ;
+             rdfs:label "has street"@en .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasStreetNumber
+ic:hasStreetNumber rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf ic:addressDataProperty ;
+                   rdfs:domain ic:Address ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "The number of a house." ;
+                   rdfs:label "has street number" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasUnitNumber
+ic:hasUnitNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf ic:addressDataProperty ;
+                 rdfs:domain ic:Address ;
+                 rdfs:range xsd:int ;
+                 rdfs:comment "add on to house number, like 56/2" ;
+                 rdfs:label "has unit number"@en .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#hasWebSite
+ic:hasWebSite rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf ic:hasContactDataProperty ;
+              rdfs:domain food:ThingsWithWebsite ;
+              rdfs:range xsd:string ;
+              rdfs:comment "the website URL of a restaurant." ;
+              rdfs:label "has web site"@en .
+
+
+###  http://purl.org/goodrelations/v1#description
+gr:description rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:domain food:ThingsWithDescription ;
+               rdfs:range xsd:string ;
+               rdfs:comment """A short textual description of the resource. 
+
+This property is semantically equivalent to rdfs:comment and just meant as a handy shortcut for marking up data.""" ;
+               rdfs:label "has description" .
+
+
+###  http://purl.org/goodrelations/v1#legalName
+gr:legalName rdf:type owl:DatatypeProperty ;
+             rdfs:domain food:ThingsWithName ;
+             rdfs:range xsd:string ;
+             rdfs:comment "The name of the gr:BusinessEntity or fo:Menu."@en ;
+             rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+             rdfs:label "has name" .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf ic:addressDataProperty ;
+                                              rdfs:domain ic:Address ;
+                                              rdfs:range xsd:float ;
+                                              rdfs:comment "a unit that represents a coordinate at geographic coordinate system." ;
+                                              rdfs:label "lattitude"@en .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> rdf:type owl:DatatypeProperty ;
+                                               rdfs:subPropertyOf ic:addressDataProperty ;
+                                               rdfs:domain ic:Address ;
+                                               rdfs:range xsd:float ;
+                                               rdfs:comment "a unit that represents a coordinate at geographic coordinate system." ;
+                                               rdfs:label "longitude"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://metafood.org#Breakfast
+food:Breakfast rdf:type owl:Class ;
+               rdfs:subClassOf <http://purl.org/ontology/fo/Food> ;
+               rdfs:comment "The subclass of fo:Food represents the first meal of the day that is by a restaurant." ;
+               rdfs:label "Breakfast" .
+
+
+###  http://metafood.org#ChineseRestaurant
+food:ChineseRestaurant rdf:type owl:Class ;
+                       rdfs:subClassOf food:Restaurant ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty food:hasCuisine ;
+                                         owl:hasValue food:chinese
+                                       ] ;
+                       rdfs:comment "It represents a restaurant that prepares and serves Chinese food to customers." ;
+                       rdfs:label "Chinese restaurant" .
+
+
+###  http://metafood.org#Cuisine
+food:Cuisine rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:oneOf ( food:burgers
+                                               food:chinese
+                                               food:curry
+                                               food:halal
+                                               food:indian
+                                               food:italian
+                                               food:japanese
+                                               food:noodles
+                                               food:pasta
+                                               food:pizza
+                                             )
+                                 ] ;
+             rdfs:subClassOf food:ThingsWithName ;
+             rdfs:comment "A cuisine is a style of cooking characterized by distinctive ingredients, techniques and dishes, and usually associated with a specific culture or geographic region." ;
+             rdfs:label "Cuisine" .
+
+
+###  http://metafood.org#Currency
+food:Currency rdf:type owl:Class ;
+              owl:disjointWith food:Price ;
+              rdfs:comment "A system of money in general use in a particular country." ;
+              rdfs:label "Currecny" .
+
+
+###  http://metafood.org#DeliveryService
+food:DeliveryService rdf:type owl:Class ;
+                     rdfs:subClassOf gr:BusinessEntity ;
+                     owl:hasKey ( gr:legalName
+                                ) ;
+                     rdfs:comment "a courier service in which a restaurant, store, or independent food delivery company delivers food to a customer." ;
+                     rdfs:label "Delivery service" .
+
+
+###  http://metafood.org#DeliverySpecification
+food:DeliverySpecification rdf:type owl:Class ;
+                           rdfs:subClassOf food:ThingsWithPostalCode ,
+                                           owl:Thing ;
+                           rdfs:comment """This class represents characteristics relates to a delivery service offered by a restaurant.
+Examples: delivery charge, delivery time""" ;
+                           rdfs:label "Delivery specification" .
+
+
+###  http://metafood.org#FastFoodRestaurant
+food:FastFoodRestaurant rdf:type owl:Class ;
+                        rdfs:subClassOf food:Restaurant ,
+                                        [ rdf:type owl:Class ;
+                                          owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty food:hasCuisine ;
+                                                          owl:hasValue food:burgers
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty food:hasCuisine ;
+                                                          owl:hasValue food:kebab
+                                                        ]
+                                                      )
+                                        ] ;
+                        rdfs:comment "It represents a restaurant that prepares and serves fast food to customers." ;
+                        rdfs:label "Fast food restaurant" .
+
+
+###  http://metafood.org#FirstRating
+food:FirstRating rdf:type owl:Class ;
+                 rdfs:subClassOf [ owl:intersectionOf ( food:Rating
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty food:hasRatingValue ;
+                                                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                               owl:onDatatype xsd:float ;
+                                                                               owl:withRestrictions ( [ xsd:maxExclusive "3.0"^^xsd:float
+                                                                                                      ]
+                                                                                                    )
+                                                                             ]
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+                 rdfs:comment "First Rating takes rating value larger than 4.5." ;
+                 rdfs:label "First Rating" .
+
+
+###  http://metafood.org#IndianRestaurant
+food:IndianRestaurant rdf:type owl:Class ;
+                      rdfs:subClassOf food:Restaurant ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty food:hasCuisine ;
+                                        owl:hasValue food:indian
+                                      ] ;
+                      rdfs:comment "It represents a restaurant that prepares and serves Indian food to customers." ;
+                      rdfs:label "Indian restaurant" .
+
+
+###  http://metafood.org#ItalianRestaurant
+food:ItalianRestaurant rdf:type owl:Class ;
+                       rdfs:subClassOf food:Restaurant ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty food:hasCuisine ;
+                                         owl:hasValue food:italian
+                                       ] ;
+                       rdfs:comment "It represents a restaurant that prepares and serves Italian food to customers." ;
+                       rdfs:label "Italian restaurant" .
+
+
+###  http://metafood.org#JapaneseRestaurant
+food:JapaneseRestaurant rdf:type owl:Class ;
+                        rdfs:subClassOf food:Restaurant ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty food:hasCuisine ;
+                                          owl:hasValue food:japanese
+                                        ] ;
+                        rdfs:comment "It represents a restaurant that prepares and serves Japanese food to customers." ;
+                        rdfs:label "Japanese restaurant" .
+
+
+###  http://metafood.org#MainDish
+food:MainDish rdf:type owl:Class ;
+              rdfs:subClassOf <http://purl.org/ontology/fo/Food> ;
+              rdfs:comment "The subclass of fo:Food represents a meal eaten around midday which is offered by a restaurant." ;
+              rdfs:label "Main dish" .
+
+
+###  http://metafood.org#OneStarRestaurant
+food:OneStarRestaurant rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( food:Restaurant
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty food:hasRating ;
+                                                                    owl:allValuesFrom food:FirstRating
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
+                       rdfs:subClassOf food:Restaurant ;
+                       rdfs:comment "It represents a restaurant in a hierarchy  and is exactly a restaurant that has rating ->First Rating." ;
+                       rdfs:label "One star restaurant" .
+
+
+###  http://metafood.org#OrderSpecification
+food:OrderSpecification rdf:type owl:Class ;
+                        rdfs:subClassOf owl:Thing ;
+                        rdfs:comment """This class represents characteristics relates to an order . These characteristics are specified by a restaurant.
+Examples: delivery time, min order.""" ;
+                        rdfs:label "Order specification" .
+
+
+###  http://metafood.org#PaymentMethodCash
+food:PaymentMethodCash rdf:type owl:Class ;
+                       rdfs:subClassOf gr:PaymentMethod ;
+                       rdfs:comment "The subclass of gr:PaymentMethod represents the cash variant of payment to perform a transaction of a purchase. It is mostly used for specifying the types of payment accepted by a gr:Business Entity." ;
+                       rdfs:label "Payment method cash" .
+
+
+###  http://metafood.org#Price
+food:Price rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty food:hasCurrency ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass food:Currency
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty food:hasPriceValue ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:float
+                           ] ;
+           rdfs:comment "The amount of money expected, required, or given in payment for something." ;
+           rdfs:label "Price" .
+
+
+###  http://metafood.org#Rating
+food:Rating rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing ;
+            rdfs:comment """It represents characteristics to identify a restaurant to its quality according to the customer experience.
+Examples: rating value, rating count.""" ;
+            rdfs:label "Rating" .
+
+
+###  http://metafood.org#Restaurant
+food:Restaurant rdf:type owl:Class ;
+                rdfs:subClassOf food:ThingsWithDescription ,
+                                gr:BusinessEntity ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty gr:offers ;
+                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass <http://purl.org/ontology/fo/Menu>
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ic:hasAddress ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass ic:Address
+                                ] ;
+                owl:disjointUnionOf ( food:OneStarRestaurant
+                                      food:ThreeStarRestaurant
+                                      food:TwoStarRestaurant
+                                    ) ;
+                owl:hasKey ( gr:legalName
+                           ) ;
+                rdfs:comment "It represents a business that prepares and serves food and drinks to customers. It also offers take-out and food delivery services." ;
+                rdfs:label "Restaurant" .
+
+
+###  http://metafood.org#SecondRating
+food:SecondRating rdf:type owl:Class ;
+                  rdfs:subClassOf [ owl:intersectionOf ( food:Rating
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty food:hasRatingValue ;
+                                                           owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                owl:intersectionOf ( [ rdf:type rdfs:Datatype ;
+                                                                                                       owl:onDatatype xsd:float ;
+                                                                                                       owl:withRestrictions ( [ xsd:minInclusive "3.0"^^xsd:float
+                                                                                                                              ]
+                                                                                                                            )
+                                                                                                     ]
+                                                                                                     [ rdf:type rdfs:Datatype ;
+                                                                                                       owl:onDatatype xsd:float ;
+                                                                                                       owl:withRestrictions ( [ xsd:maxExclusive "4.5"^^xsd:float
+                                                                                                                              ]
+                                                                                                                            )
+                                                                                                     ]
+                                                                                                   )
+                                                                              ]
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+                  rdfs:comment "Second Rating takes rating value between 3 and 4.5." ;
+                  rdfs:label "Second Rating" .
+
+
+###  http://metafood.org#Snack
+food:Snack rdf:type owl:Class ;
+           rdfs:subClassOf <http://purl.org/ontology/fo/Food> ;
+           rdfs:comment "It is a small service of food and generally eaten between meals that offered by a restaurant." ;
+           rdfs:label "Snack" .
+
+
+###  http://metafood.org#ThingsWithDescription
+food:ThingsWithDescription rdf:type owl:Class ;
+                           rdfs:comment "generalized class for classes that have gr:description property." ;
+                           rdfs:label "Things with description" .
+
+
+###  http://metafood.org#ThingsWithName
+food:ThingsWithName rdf:type owl:Class ;
+                    rdfs:comment "generalized class for classes that have gr:legalName property." ;
+                    rdfs:label "Things with name" .
+
+
+###  http://metafood.org#ThingsWithPostalCode
+food:ThingsWithPostalCode rdf:type owl:Class ;
+                          rdfs:comment "generalized class for classes that have ic:hasPostalCode property." ;
+                          rdfs:label "Things with postal code" .
+
+
+###  http://metafood.org#ThingsWithWebsite
+food:ThingsWithWebsite rdf:type owl:Class ;
+                       rdfs:comment "generalized class for classes that have ic:hasWebSite property." ;
+                       rdfs:label "Things with website" .
+
+
+###  http://metafood.org#ThirdRating
+food:ThirdRating rdf:type owl:Class ;
+                 rdfs:subClassOf [ owl:intersectionOf ( food:Rating
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty food:hasRatingValue ;
+                                                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                               owl:onDatatype xsd:float ;
+                                                                               owl:withRestrictions ( [ xsd:maxExclusive "3.0"^^xsd:float
+                                                                                                      ]
+                                                                                                    )
+                                                                             ]
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
+                 rdfs:comment "Third Rating takes rating value smaller than 3." ;
+                 rdfs:label "Third Rating" .
+
+
+###  http://metafood.org#ThreeStarRestaurant
+food:ThreeStarRestaurant rdf:type owl:Class ;
+                         owl:equivalentClass [ owl:intersectionOf ( food:Restaurant
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty food:hasRating ;
+                                                                      owl:allValuesFrom food:ThirdRating
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                         rdfs:subClassOf food:Restaurant ;
+                         rdfs:comment "It represents a restaurant in a hierarchy and is exactly a restaurant that has rating ->Third Rating." ;
+                         rdfs:label "Three star restaurant" .
+
+
+###  http://metafood.org#TwoStarRestaurant
+food:TwoStarRestaurant rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( food:Restaurant
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty food:hasRating ;
+                                                                    owl:allValuesFrom food:SecondRating
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
+                       rdfs:subClassOf food:Restaurant ;
+                       rdfs:comment "It represents a restaurant in a hierarchy and is exactly a restaurant that has rating ->Second Rating." ;
+                       rdfs:label "Two star restaurant" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#Address
+ic:Address rdf:type owl:Class ;
+           rdfs:subClassOf food:ThingsWithPostalCode ,
+                           ic:iContactThing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ic:hasBuilding ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ic:hasPostalCode ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ic:hasStreet ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ic:hasStreetNumber ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:int
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ic:hasUnitNumber ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:int
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:float
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty <http://www.w3.org/2003/01/geo/wgs84_pos#long> ;
+                             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:float
+                           ] ;
+           owl:hasKey ( ic:hasStreet
+                        ic:hasStreetNumber
+                        ic:hasUnitNumber
+                      ) ;
+           rdfs:comment "Address is the main concept for a contact.  It has been designed to represent any type of address in the world, including India and the UK.  For example, the property hasBuilding is important in many UK and Indian addresses to further identify the person or business location."@en ;
+           rdfs:label "Address"@en .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#PhoneNumber
+ic:PhoneNumber rdf:type owl:Class ;
+               rdfs:subClassOf ic:iContactThing ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty food:hasAreaCode ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty food:hasCountryCode ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onDataRange xsd:nonNegativeInteger
+                               ] ;
+               rdfs:comment "A Phone number serves as an address for switching telephone calls using a system of destination code routing." ;
+               rdfs:label "Phone Number" .
+
+
+###  http://ontology.eil.utoronto.ca/icontact.owl#iContactThing
+ic:iContactThing rdf:type owl:Class ;
+                 rdfs:subClassOf owl:Thing ;
+                 rdfs:comment "generalized class for contact concepts.." ;
+                 rdfs:label "Contact Thing" .
+
+
+###  http://purl.org/goodrelations/v1#BusinessEntity
+gr:BusinessEntity rdf:type owl:Class ;
+                  rdfs:subClassOf food:ThingsWithName ,
+                                  food:ThingsWithWebsite ,
+                                  owl:Thing ;
+                  owl:disjointWith gr:PaymentMethod ;
+                  rdfs:comment """An instance of this class represents the legal agent making (or seeking) a particular offering. This can be a legal body or a person. A business entity has at least a primary mailing address and contact details. For this, typical address standards (vCard) and location data (geo, WGS84) can be attached. Note that the location of the business entity is not necessarily the location from which the product or service is being available (e.g. the branch or store). Use gr:Location for stores and branches.
+		
+Example: Siemens Austria AG, Volkswagen Ltd., Peter Miller's Cell phone Shop LLC
+
+Compatibility with schema.org: This class is equivalent to the union of http://schema.org/Person and http://schema.org/Organization.		
+"""@en ;
+                  rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+                  rdfs:label "Business entity"@en .
+
+
+###  http://purl.org/goodrelations/v1#PaymentMethod
+gr:PaymentMethod rdf:type owl:Class ;
+                 rdfs:subClassOf owl:Thing ;
+                 rdfs:comment """A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction. This element is mostly used for specifying the types of payment accepted by a gr:BusinessEntity.
+
+Examples: VISA, MasterCard, Diners, cash, or bank transfer in advance."""@en ;
+                 rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+                 rdfs:label "Payment method"@en .
+
+
+###  http://purl.org/goodrelations/v1#PaymentMethodCreditCard
+gr:PaymentMethodCreditCard rdf:type owl:Class ;
+                           rdfs:subClassOf gr:PaymentMethod ;
+                           rdfs:comment """The subclass of gr:PaymentMethod represents all variants and brands of credit or debit cards as a standardized procedure for transferring the monetary amount for a purchase. It is mostly used for specifying the types of payment accepted by a gr:Business Entity.
+
+Examples: VISA, MasterCard, or American Express."""@en ;
+                           rdfs:isDefinedBy <http://purl.org/goodrelations/v1> ;
+                           rdfs:label "Payment method credit card"@en .
+
+
+###  http://purl.org/ontology/fo/Food
+<http://purl.org/ontology/fo/Food> rdf:type owl:Class ;
+                                   rdfs:subClassOf owl:Thing ;
+                                   rdfs:comment "A Food is something that can be eaten. It may be a basic food such as salt or it may be the more complex result of another recipe, for example chicken stock. A recipe uses foods as part of ingredients and also produces foods to be eaten."@en-gb ;
+                                   rdfs:label "Food"@en-gb ;
+                                   ns1:term_status "testing" .
+
+
+###  http://purl.org/ontology/fo/Menu
+<http://purl.org/ontology/fo/Menu> rdf:type owl:Class ;
+                                   rdfs:subClassOf food:ThingsWithDescription ,
+                                                   food:ThingsWithName ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty gr:legalName ;
+                                                     owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                     owl:onDataRange xsd:string
+                                                   ] ;
+                                   rdfs:comment "A Menu is a collection of recipes, usually one or more per course, that have been selected to go well together. A Menu may also be related to a particular cuisine or occasion."@en-gb ;
+                                   rdfs:label "Menu"@en-gb ;
+                                   ns1:term_status "testing" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://metafood.org#burgers
+food:burgers rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#chinese
+food:chinese rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#curry
+food:curry rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#desserts
+food:desserts rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#halal
+food:halal rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#indian
+food:indian rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#italian
+food:italian rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#japanese
+food:japanese rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#kebab
+food:kebab rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#noodles
+food:noodles rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#pasta
+food:pasta rdf:type owl:NamedIndividual .
+
+
+###  http://metafood.org#pizza
+food:pizza rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( food:Cuisine
+                food:Restaurant
+                ic:Address
+                <http://purl.org/ontology/fo/Menu>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
