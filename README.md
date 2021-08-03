@@ -16,9 +16,9 @@ Ontop Tutorial: https://github.com/ontop/ontop/wiki/Tutorials
 
 
 ## Step 3: Verification of Semantic Structure
-# Ontology verification
+### Ontology verification
 Checking the quality of the ontology created at STEP 1 with the OOPS! ontology pitfall scanner (http://oops.linkeddata.es/) and improve it accordingly.
-# KG verification
+### KG verification
 Writing SHACL rules with varying complexities for validating the knowledge graph resulting from STEP 2 and run these following the instructions in the
 TopBraid SHACL engine2 (https://github.com/TopQuadrant/shacl) to get validation results.
 
