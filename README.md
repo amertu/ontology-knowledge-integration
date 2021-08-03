@@ -20,7 +20,7 @@ TopBraid SHACL engine2 (https://github.com/TopQuadrant/shacl) to get validation 
 
 ## Step 4: Ontology Alignment
 
-I decided to use the schema ontology (https://schema.org/docs/developers.html\#defs) which includes the FoodEstablishment ontology as input for this alignment. However, all entities that have been matched with the metaFood ontology entities were from the FoodEstablishment ontology.
+I decided to use the schema ontology (https://schema.org/docs/developers.html\defs) which includes the FoodEstablishment ontology as input for this alignment. However, all entities that have been matched with the metaFood ontology entities were from the FoodEstablishment ontology.
 In addition, I used the web tool of LogMap (http://krrwebtools.cs.ox.ac.uk/logmap/) to find matchings between both ontologies.
 
 
