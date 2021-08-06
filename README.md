@@ -1,4 +1,4 @@
-# SAIKS_SS2020
+# Advanced technical steps for ontology-based applications
 
 ## Step 1: Advanced Ontology Engineering
 
