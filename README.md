@@ -1,5 +1,4 @@
-# #MetaFood
-Performing advanced technical steps for ontology-based applications
+# #MetaFood: Ontology-based application enhanced using advanced semantic techniques
 
 ## Step 1: Advanced Ontology Engineering
 
