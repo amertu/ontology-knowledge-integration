@@ -16,14 +16,12 @@ This project is a knowledge graph application designed to integrate and reason o
 
 ## Key Features
 The system demonstrates the full lifecycle of semantic application development and ontology engineering:
-- Harmonize heterogeneous food-related data using **semantic technologies**
+- Harmonize heterogeneous food-related data using **semantic technologies**.
 - Reuse existing well-established ontologies to improve interoperability.
 - Enhanced the core **OWL2** developed ontology using **Ontology Design Patterns**.
 - Enforce semantic constraints using SHACL & ontology validation using **OOPS!**
 - Support data integration using **SPARQL** and **OBDA (Ontology-Based Data Access)**.
-- Enhanced interoperability with other semantic systems by aligning domain-specific ontologies using **LogMap**
-
----
+- Enhanced interoperability with other semantic systems by aligning domain-specific ontologies using **LogMap**.
 
 ## Business Impact
 - Enhance **data-driven decision-making** by ensuring high-quality, semantically validated data.
