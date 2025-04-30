@@ -26,37 +26,37 @@ The system demonstrates the full lifecycle of semantic application development a
 ## Life Cycle
 
 ```markdown
-                        +----------------------------+
-                        | Heterogeneous Food Sources |
-                        +-------------+--------------+
-                                      |
-                                      v
-                        +----------------------------+
-                        |    OBDA Mapping (Ontop)    |
-                        +-------------+--------------+
-                                      |
-                                      v
-                        +------------------------------+
-                        |   Core OWL2 Ontology         |         +----------------------------+
-                        |   - Design Patterns          | <-----> | Ontology Validation (OOPS) |
-                        |   - Reuse (BBC, GR, iContact)|         +----------------------------+
-                        +-------------+----------------+      
-                                      |
-                                      v
-                        +----------------------------+           +-----------------------+
-                        | Knowledge Graph (GraphDB)  |  <----->  |    SHACL Validation   |
-                        +-------------+--------------+           +-----------------------+
-                                      |
-                                      v
-                             +----------------+
-                             | SPARQL Queries |
-                             +----------------+
-                        
-                        Optional:
-                        +----------------------------+
-                        | Alignment (schema.org)     |
-                        |       via LogMap           |
-                        +----------------------------+
+            +----------------------------+
+            | Heterogeneous Food Sources |
+            +-------------+--------------+
+                          |
+                          v
+            +----------------------------+
+            |    OBDA Mapping (Ontop)    |
+            +-------------+--------------+
+                          |
+                          v
+            +------------------------------+
+            |   Core OWL2 Ontology         |         +----------------------------+
+            |   - Design Patterns          | <-----> | Ontology Validation (OOPS) |
+            |   - Reuse (BBC, GR, iContact)|         +----------------------------+
+            +-------------+----------------+      
+                          |
+                          v
+            +----------------------------+           +-----------------------+
+            | Knowledge Graph (GraphDB)  |  <----->  |    SHACL Validation   |
+            +-------------+--------------+           +-----------------------+
+                          |
+                          v
+                 +----------------+
+                 | SPARQL Queries |
+                 +----------------+
+            
+            Optional:
+            +----------------------------+
+            | Alignment (schema.org)     |
+            |       via LogMap           |
+            +----------------------------+
 ```
 
 ## Business Impact
