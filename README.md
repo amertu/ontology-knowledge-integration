@@ -43,9 +43,9 @@ The system demonstrates the full lifecycle of semantic application development a
                                     +-------------+----------------+      
                                                   |
                                                   v
-                                    +----------------------------+        +-----------------------+
-                                    | Knowledge Graph (GraphDB)  |<-----> |    SHACL Validation   |
-                                    +-------------+--------------+        +-----------------------+
+                                    +----------------------------+           +-----------------------+
+                                    | Knowledge Graph (GraphDB)  |  <----->  |    SHACL Validation   |
+                                    +-------------+--------------+           +-----------------------+
                                                   |
                                                   v
                                          +----------------+
