@@ -1,34 +1,31 @@
-# #MetaFood: Ontology-based application enhanced using advanced semantic techniques
+# Ontology-Based Knowledge Graph Application
+![Python](https://img.shields.io/badge/Python-3.7-3776AB?logo=python&logoColor=white)
+![GraphDB](https://img.shields.io/badge/GraphDB-8.7-F05032?logo=graphdb&logoColor=white)
+![RDF](https://img.shields.io/badge/RDF-1.1-3776AB?logo=rdf4j&logoColor=white)
+![SPARQL](https://img.shields.io/badge/SPARQL-E34F26?logo=rdf4j&logoColor=white)
+![OWL](https://img.shields.io/badge/OWL-2-blue?logo=owl&logoColor=blue)
+![SHACL](https://img.shields.io/badge/SHACL-E34F26?logo=shacl&logoColor=white)
+![OOPS!](https://img.shields.io/badge/OOPS!-%E2%9C%94-blue?logo=oops-%E2%9C%94-8155ba&logoColor=white)
+![OnTop](https://img.shields.io/badge/OnTop-3.0-3776AB?logo=ontop&logoColor=white)
+![TopBraid SHACL API](https://img.shields.io/badge/TopBraid_SHACL_API-1.4.4-blue?logo=ontop&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.2-blue?logo=postgresql&logoColor=white)
+![Protégé](https://img.shields.io/badge/Prot%C3%A9g%C3%A9c-5.6.5-3776AB?logo=protege&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
 
-## 1: Advanced Ontology Engineering
+This project is a knowledge graph application designed to integrate and reason over food-related information using a domain-specific **ontology**, and advanced semantic techniques.
 
-During building the ontology, vocabularies of three external ontologies that were needed for this domain were reused, which I present in the next:
-* BBC food ontology: https://www.bbc.co.uk/ontologies/fo
-* International Contact Ontology: http://ontology.eil.utoronto.ca/icontact.html#d4e383
-* Good Relation Ontology: http://www.heppnetz.de/ontologies/goodrelations/v1.html
+## Key Features
+The system demonstrates the full lifecycle of semantic application development and ontology engineering:
+- Harmonize heterogeneous food-related data using **semantic technologies**
+- Reuse existing well-established ontologies to improve interoperability.
+- Enhanced the core **OWL2** developed ontology using **Ontology Design Patterns**.
+- Enforce semantic constraints using SHACL & ontology validation using **OOPS!**
+- Support data integration using **SPARQL** and **OBDA (Ontology-Based Data Access)**.
+- Enhanced interoperability with other semantic systems by aligning domain-specific ontologies using **LogMap**
 
-Furthermore, advanced modelling features offered by OWL2 and different Ontology Design Patterns are used during this step.
+---
 
-## 2: KG creation through OBDA
-I used Ontop plugin in Protégé to create the mapping assertions between my ontology and relational database. I applied the mappings to materialize the resulting ontology-based data into a knowledge graph and stored it into the GraphDB graph-database.
-
-Ontop Tutorial: https://github.com/ontop/ontop/wiki/Tutorials
-
-
-## 3: Verification of Semantic Structure
-### Ontology verification
-Checking the quality of the ontology created at STEP 1 with the OOPS! ontology pitfall scanner (http://oops.linkeddata.es/) and improve it accordingly.
-### KG verification
-Writing SHACL rules with varying complexities for validating the knowledge graph resulting from STEP 2 and run these following the instructions in the
-TopBraid SHACL engine2 (https://github.com/TopQuadrant/shacl) to get validation results.
-
-## 4: Ontology Alignment
-
-I decided to use the schema ontology (https://schema.org/docs/developers.html#defs) which includes the FoodEstablishment ontology as input for this alignment. However, all entities that have been matched with the metaFood ontology entities were from the FoodEstablishment ontology.
-
-In addition, I used the web tool of LogMap (http://krrwebtools.cs.ox.ac.uk/logmap/) to find matchings between both ontologies.
-
-
-## Final Report Overleaf:
-
-https://www.overleaf.com/read/zctrgvmppxgt
+## Business Impact
+- Enhance **data-driven decision-making** by ensuring high-quality, semantically validated data.
+- **Reduce errors** in business intelligence systems caused by inconsistent or redundant data.
+- Enable seamless integration of structured data into **knowledge-driven applications**.
