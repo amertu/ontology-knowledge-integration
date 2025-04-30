@@ -23,8 +23,46 @@ The system demonstrates the full lifecycle of semantic application development a
 - Support data integration using **SPARQL** and **OBDA (Ontology-Based Data Access)**.
 - Enhanced interoperability with other semantic systems by aligning domain-specific ontologies using **LogMap**
 
+## Work Flow
+
 ---
 
+### 🧩 **Option 3: Textual Table Diagram (ASCII Style)**  
+Best for: Lightweight README files where Mermaid is not supported.
+
+```markdown
+                                    +----------------------------+
+                                    | Heterogeneous Food Sources |
+                                    +-------------+--------------+
+                                                  |
+                                                  v
+                                    +----------------------------+
+                                    |    OBDA Mapping (Ontop)    |
+                                    +-------------+--------------+
+                                                  |
+                                                  v
+                                    +------------------------------+
+                                    |   Core OWL2 Ontology         |         +----------------------------+
+                                    |   - Design Patterns          | <-----> | Ontology Validation (OOPS) |
+                                    |   - Reuse (BBC, GR, iContact)|         +----------------------------+
+                                    +-------------+----------------+      
+                                                  |
+                                                  v
+                                    +----------------------------+        +-----------------------+
+                                    | Knowledge Graph (GraphDB)  |<-----> |    SHACL Validation   |
+                                    +-------------+--------------+        +-----------------------+
+                                                  |
+                                                  v
+                                         +----------------+
+                                         | SPARQL Queries |
+                                         +----------------+
+                                    
+                                    Optional:
+                                    +----------------------------+
+                                    | Alignment (schema.org)     |
+                                    |       via LogMap           |
+                                    +----------------------------+
+```
 ## Business Impact
 - Enhance **data-driven decision-making** by ensuring high-quality, semantically validated data.
 - **Reduce errors** in business intelligence systems caused by inconsistent or redundant data.
