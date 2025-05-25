@@ -10,7 +10,6 @@
 ![TopBraid SHACL API](https://img.shields.io/badge/TopBraid_SHACL_API-1.4.4-blue?logo=ontop&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.2-blue?logo=postgresql&logoColor=white)
 ![Protégé](https://img.shields.io/badge/Prot%C3%A9g%C3%A9c-5.6.5-3776AB?logo=protege&logoColor=white)
-![Git](https://img.shields.io/badge/Git-2.49.0-f05133?logo=git&logoColor=white)
 
 This project is a knowledge graph application designed to integrate and reason over food-related information using a domain-specific **ontology**, and advanced semantic techniques.
 
