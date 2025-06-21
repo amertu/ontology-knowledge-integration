@@ -57,3 +57,7 @@ The system demonstrates the full lifecycle of semantic application development a
             |       via LogMap           |
             +----------------------------+
 ```
+
+## Project Report
+
+[The full report is available via Overleaf](https://www.overleaf.com/read/zctrgvmppxgt#4a3fefa)
